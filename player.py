@@ -2,7 +2,7 @@ import math
 import random
 
 class Player:
-    #game =  TicTacToe()
+    
         
     def __init__(self, letter):
         #letter is x or o
