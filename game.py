@@ -48,17 +48,19 @@ class TicTacToe:
 
     def winner(self, square, letter):
         # Winner if 3 in a row  anywhere.. We have to check all of these!
-        # first let's check the row
+        # first checking the row
         row_ind = square//3
         row = self.board[row_ind*3 : (row_ind + 1) * 3]
         if all([spot == letter for spot in row]):
             return True
 
-        #check Column
+        # Second checking the  Column
         col_ind = square % 3
         column = [self.board[col_ind + i*3] for i in range(3)]
         if all([spot == letter for spot in column]):
             return True
+        
+        # Third Checking Diagonally
 
 def play(game, x_player, o_player, print_game = True):
     # returns the winner of the gam! or None for a tie
