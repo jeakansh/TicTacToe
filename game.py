@@ -71,7 +71,7 @@ class TicTacToe:
             if all([spot == letter for spot in diagonal2]):
                 return True
         
-        # if all of These check fail
+        # if all of these check fail means we don't have a winner
         return False
 
 def play(game, x_player, o_player, print_game = True):
