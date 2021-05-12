@@ -54,13 +54,25 @@ class TicTacToe:
         if all([spot == letter for spot in row]):
             return True
 
-        # Second checking the  Column
+        # Second checking the Column
         col_ind = square % 3
         column = [self.board[col_ind + i*3] for i in range(3)]
         if all([spot == letter for spot in column]):
             return True
         
         # Third Checking Diagonally
+        # But only if the square is an even number (0,2,4,6,8)
+        # These are the only moves possible to win a diagonal
+        if square%2 == 0:
+            diagonal1 = [self.board[i] for i in [0,4,8]] # Left to right Diagonal
+            if all([spot == letter for spot in diagonal1]):
+                return True
+            diagonal2 = [self.board[i] for i in [2,4,6]] # right to left Diagonal
+            if all([spot == letter for spot in diagonal2]):
+                return True
+        
+        # if all of These check fail
+        return False
 
 def play(game, x_player, o_player, print_game = True):
     # returns the winner of the gam! or None for a tie
