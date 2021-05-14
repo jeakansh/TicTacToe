@@ -1,3 +1,6 @@
+from player import HumanPlayer,RandomComputerPlayer
+import time
+
 class TicTacToe:
 
     def __init__(self):
@@ -19,7 +22,7 @@ class TicTacToe:
             print('| ' + ' | '.join(row) + ' |')
 
     def available_moves(self):
-        return [i for i , spot in enumerate(self.borad) if spot == ' ']
+        return [i for i , spot in enumerate(self.board) if spot == ' ']
         # moves = []
         # for(i,spot) in enumerate(self.board):
         #    # ['x', 'x', 'o'] --> [(0, 'x'), (1, 'x'), (2, 'o')]
@@ -100,15 +103,29 @@ def play(game, x_player, o_player, print_game = True):
 
             if game.current_winner:
                 if print_game:
-                    print(letter + 'Wins!')
+                    print(letter + ' Wins!')
                 return letter
 
-
             # After we made our move, we need alternative letters
-            letter = '0' if letter == 'X' else 'X'
+            letter = 'O' if letter == 'X' else 'X' #switches player
             # if letter == 'X':
             #    letter = 'O'
             # else:
             #   letter = 'X'
-        if print_game:
-            print('It\'s a tie!')
+
+        #Tiny Break to make things to easier to read
+        time.sleep(0.8)
+
+    if print_game:
+        print('It\'s a tie!')
+
+
+if __name__ == '__main__':
+    x_player = HumanPlayer('X')
+    second_player = input("Do you want to play against a Human(H) or Computer(C) Input: ")
+    if second_player == 'H':
+        o_player = HumanPlayer('O')
+    elif second_player == 'C':
+        o_player = RandomComputerPlayer('O')
+    t = TicTacToe()
+    play(t, x_player , o_player, print_game=True)

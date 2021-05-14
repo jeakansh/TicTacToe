@@ -3,7 +3,6 @@ import random
 
 class Player:
     
-        
     def __init__(self, letter):
         #letter is x or o
         self.letter = letter
@@ -31,7 +30,7 @@ class HumanPlayer(Player):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(self.letter + '\'s turn. Input move (0-9):')
+            square = input(self.letter + '\'s turn. Input move (0-8):')
             # We're going to check that is a correct value by trying to cast
             # it to an integer, and if it's not, then we say its invalid
             # if that spot is not available on the board, we also say its invalid
